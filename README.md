@@ -326,7 +326,6 @@ Returns:
 ## ⚠️ Limitations
 
 - Training logic is distributed across notebooks rather than Python modules.
-- There is no pinned `requirements.txt` file yet.
 - Model versioning and experiment tracking are not currently formalized.
 - Input validation in the app is minimal and numeric-only.
 
