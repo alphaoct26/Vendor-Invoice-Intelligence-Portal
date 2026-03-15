@@ -1,5 +1,7 @@
 # Vendor Invoice Intelligence Portal
 
+**Live App:** [https://vendor-invoice-intelligence-app-77gt8jg95btahv93my4z2s.streamlit.app/](https://vendor-invoice-intelligence-app-77gt8jg95btahv93my4z2s.streamlit.app/)
+
 A machine learning project for vendor invoice analytics with two business outcomes:
 
 1. Freight cost prediction for incoming invoices.
