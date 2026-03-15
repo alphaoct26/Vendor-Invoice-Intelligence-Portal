@@ -1,28 +1,28 @@
-# Vendor Invoice Intelligence Portal
+# 🧾 Vendor Invoice Intelligence Portal
 
-**Live App:** [https://vendor-invoice-intelligence-app-77gt8jg95btahv93my4z2s.streamlit.app/](https://vendor-invoice-intelligence-app-77gt8jg95btahv93my4z2s.streamlit.app/)
+🚀 **Live App:** [https://vendor-invoice-intelligence-app-77gt8jg95btahv93my4z2s.streamlit.app/](https://vendor-invoice-intelligence-app-77gt8jg95btahv93my4z2s.streamlit.app/)
 
 A machine learning project for vendor invoice analytics with two business outcomes:
 
-1. Freight cost prediction for incoming invoices.
-2. Invoice manual-review flag prediction for risky or anomalous invoices.
+1. 🚚 Freight cost prediction for incoming invoices.
+2. 🚩 Invoice manual-review flag prediction for risky or anomalous invoices.
 
 The project combines data extraction from SQLite, notebook-based experimentation, saved model artifacts, and a Streamlit application for interactive inference.
 
-## Project Goals
+## 🎯 Project Goals
 
 This project is designed to help procurement and finance teams:
 
-- estimate freight cost before final review,
-- identify invoices that may require manual validation,
-- reduce review time for low-risk invoices,
-- support data-driven invoice operations.
+- 📦 estimate freight cost before final review,
+- 🔍 identify invoices that may require manual validation,
+- ⚡ reduce review time for low-risk invoices,
+- 📊 support data-driven invoice operations.
 
-## Solution Overview
+## 💡 Solution Overview
 
 The solution has two parallel ML workflows.
 
-### 1. Freight Cost Prediction
+### 1. 🚚 Freight Cost Prediction
 
 This workflow predicts the freight amount using invoice-level numeric features.
 
@@ -35,7 +35,7 @@ This workflow predicts the freight amount using invoice-level numeric features.
   - Random Forest Regressor
 - Model selection rule: lowest MAE on test data
 
-### 2. Invoice Manual Approval Flagging
+### 2. 🚩 Invoice Manual Approval Flagging
 
 This workflow predicts whether an invoice should be flagged for manual review.
 
@@ -53,7 +53,7 @@ This workflow predicts whether an invoice should be flagged for manual review.
 - Preprocessing: `StandardScaler`
 - Optimization metric: F1 score
 
-## Architecture
+## 🏗️ Architecture
 
 ```mermaid
 flowchart TD
@@ -71,9 +71,9 @@ flowchart TD
     F --> G[Interactive Predictions]
 ```
 
-## End-to-End Workflow
+## 🔄 End-to-End Workflow
 
-### Data Layer
+### 🗄️ Data Layer
 
 The project uses a SQLite database:
 
@@ -81,7 +81,7 @@ The project uses a SQLite database:
 
 This database is the main structured source used by both model pipelines.
 
-### Freight Pipeline
+### 🚚 Freight Pipeline
 
 The freight workflow is organized as:
 
@@ -104,7 +104,7 @@ Saved freight artifacts:
 
 The current Streamlit app loads `freight_model.pkl`.
 
-### Invoice Flagging Pipeline
+### 🚩 Invoice Flagging Pipeline
 
 The invoice flagging workflow is organized as:
 
@@ -129,7 +129,7 @@ Saved invoice artifacts:
 - `invoice_flagging/models/predict_flag_invoice.pkl`
 - `invoice_flagging/models/scaler.pkl`
 
-### Inference Layer
+### 🔮 Inference Layer
 
 Notebook-based inference is available in:
 
@@ -138,7 +138,7 @@ Notebook-based inference is available in:
 
 These notebooks show how to load saved artifacts and generate predictions for new input data.
 
-### Application Layer
+### 🖥️ Application Layer
 
 The interactive UI is implemented in:
 
@@ -152,7 +152,7 @@ The Streamlit app:
 - returns freight cost predictions,
 - returns invoice manual-review predictions.
 
-## Current Project Structure
+## 📁 Current Project Structure
 
 ```text
  Invoice Intelligence System/
@@ -182,9 +182,9 @@ The Streamlit app:
         └── scaler.pkl
 ```
 
-## Model Development Process
+## 🧠 Model Development Process
 
-## Freight Model Process
+## 🚚 Freight Model Process
 
 1. Load vendor invoice records from SQLite.
 2. Select `Quantity` and `Dollars` as predictors.
@@ -199,7 +199,7 @@ The Streamlit app:
    - R2
 6. Save the best model based on lowest MAE.
 
-## Invoice Flagging Model Process
+## 🚩 Invoice Flagging Model Process
 
 1. Load invoice and purchase data from SQLite.
 2. Aggregate purchase-level metrics by `PONumber`.
@@ -216,7 +216,7 @@ The Streamlit app:
    - F1-oriented model selection via `GridSearchCV`
 9. Save the classifier and scaler.
 
-## Key Business Rules Used for Flagging
+## 📋 Key Business Rules Used for Flagging
 
 The binary target `flag_invoice` is created from business logic in preprocessing.
 
@@ -227,17 +227,17 @@ An invoice is flagged when either condition is met:
 
 This means the classification model is learning a label derived from operational rules rather than a manually curated historical label.
 
-## Dependencies
+## 📦 Dependencies
 
 Core Python dependencies used in the project:
 
-- `streamlit`
-- `pandas`
-- `joblib`
-- `scikit-learn`
-- `numpy`
-- `sqlite3` (standard library)
-- `pathlib` (standard library)
+- 🌐 `streamlit`
+- 🐼 `pandas`
+- 💾 `joblib`
+- 🤖 `scikit-learn`
+- 🔢 `numpy`
+- 🗄️ `sqlite3` (standard library)
+- 📂 `pathlib` (standard library)
 
 Suggested installation command:
 
@@ -251,7 +251,7 @@ If you use the workspace virtual environment:
 & "d:/Data Anayst codes/venv/Scripts/python.exe" -m pip install streamlit pandas joblib scikit-learn numpy
 ```
 
-## How to Run the Streamlit App
+## ▶️ How to Run the Streamlit App
 
 From the workspace root:
 
@@ -265,7 +265,7 @@ Then open:
 http://localhost:8501
 ```
 
-## How to Retrain the Models
+## 🔁 How to Retrain the Models
 
 Because the training workflow is notebook-based, retraining is typically done by executing the notebooks in order.
 
@@ -281,16 +281,16 @@ Because the training workflow is notebook-based, retraining is typically done by
 2. `invoice_flagging/modeling.ipynb`
 3. `invoice_flagging/train.ipynb`
 
-## Input Requirements
+## 📥 Input Requirements
 
-### Freight Prediction Inputs
+### 🚚 Freight Prediction Inputs
 
 The app expects:
 
 - `Quantity`
 - `Dollars`
 
-### Invoice Flag Prediction Inputs
+### 🚩 Invoice Flag Prediction Inputs
 
 The app expects:
 
@@ -302,35 +302,35 @@ The app expects:
 - `days_po_to_invoice`
 - `total_item_dollars`
 
-## Outputs
+## 📤 Outputs
 
-### Freight Module
-
-Returns:
-
-- predicted freight cost as a numeric amount.
-
-### Invoice Flagging Module
+### 🚚 Freight Module
 
 Returns:
 
-- `0` for auto-approve,
-- `1` for manual review required.
+- 💵 predicted freight cost as a numeric amount.
 
-## Technical Notes
+### 🚩 Invoice Flagging Module
+
+Returns:
+
+- ✅ `0` for auto-approve,
+- ⚠️ `1` for manual review required.
+
+## 🔧 Technical Notes
 
 - Several folders and notebook names contain spelling inconsistencies such as `frieght`, `preprocssing`, and `Flagg`. The README preserves the existing names so they match the actual repository.
 - The project is currently notebook-driven for data science workflows and script-driven for the Streamlit application.
 - The Streamlit app is the main deployment interface for end users.
 
-## Limitations
+## ⚠️ Limitations
 
 - Training logic is distributed across notebooks rather than Python modules.
 - There is no pinned `requirements.txt` file yet.
 - Model versioning and experiment tracking are not currently formalized.
 - Input validation in the app is minimal and numeric-only.
 
-## Recommended Next Improvements
+## 🚀 Recommended Next Improvements
 
 1. Add a `requirements.txt` or `pyproject.toml` for reproducible setup.
 2. Refactor notebook logic into reusable Python modules.
@@ -338,6 +338,6 @@ Returns:
 4. Add model performance snapshots and sample outputs to the README.
 5. Add tests for inference functions and artifact loading.
 
-## Authoring Intent
+## ✍️ Authoring Intent
 
 This repository reflects a practical machine learning workflow moving from notebook experimentation to an interactive application for business users. It is best understood as a portfolio-style applied ML project with an operational dashboard layer.
